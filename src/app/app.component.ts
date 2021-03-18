@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MainService } from './main.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
 
+  constructor(private main: MainService) { }
+
   public formGroup: FormGroup;
+  public reversedString: string = null;
+  public loading: boolean = false;
 
   ngOnInit() {
     this.formGroup = new FormGroup({
@@ -24,7 +29,11 @@ export class AppComponent implements OnInit {
     return this.formGroup.get('firstName');
   }
 
-  send() {
-
+  async send() {
+    if (this.formGroup.controls['firstName'].valid) {
+      this.loading = true;
+      this.reversedString = await this.main.reverseName(this.formGroup.controls['firstName'].value);
+      this.loading = false;
+    }
   }
 }

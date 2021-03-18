@@ -11,5 +11,6 @@
     <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)">Input invalid</mdb-error>
     <mdb-success *ngIf="input.valid && (input.dirty || input.touched)">Input valid</mdb-success>
   </div>
-  <button (click)="send()">Send</button>
+  <button (click)="send()" [disabled]="loading">Send</button>
+  <div>{{reversedString}}</div>
 </form>
