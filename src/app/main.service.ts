@@ -1,20 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { promise } from 'selenium-webdriver';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  wait() {
-    return new Promise( res => setTimeout(res, 2000) );
-  }
-
-  async reverseName(firstName: string):Promise<any> {
-    await this.wait();
-    return firstName.split("").reverse().join("");
+  public send(form: any): Observable<any> {
+    return this.http.post('https://api.paperless.tax/setemail', form);
   }
 }

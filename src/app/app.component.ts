@@ -20,6 +20,9 @@ export class AppComponent implements OnInit {
       firstName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       email: new FormControl(null, [Validators.required, Validators.email])
     });
+    this.formGroup.get("firstName").valueChanges.subscribe(x => {
+      this.reversedString = x.split("").reverse().join("");
+    })
   }
 
   get input() {
@@ -29,11 +32,17 @@ export class AppComponent implements OnInit {
     return this.formGroup.get('firstName');
   }
 
-  async send() {
-    if (this.formGroup.controls['firstName'].valid) {
+  send() {
+    if (this.formGroup.controls['firstName'].valid && this.formGroup.controls['email'].valid) {
       this.loading = true;
-      this.reversedString = await this.main.reverseName(this.formGroup.controls['firstName'].value);
-      this.loading = false;
+      let form = {
+        name: this.formGroup.controls['firstName'].value,
+        email: this.formGroup.controls['email'].value
+      };
+      this.main.send(form).subscribe(data => {
+        console.log(data);
+        this.loading = false;
+      });
     }
   }
 }
