@@ -12,8 +12,8 @@ export class AppComponent implements OnInit {
   constructor(private main: MainService) { }
 
   public formGroup: FormGroup;
-  public reversedString: string = null;
   public loading: boolean = false;
+  public firstName: string = null;
 
   ngOnInit() {
     this.formGroup = new FormGroup({
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
       email: new FormControl(null, [Validators.required, Validators.email])
     });
     this.formGroup.get("firstName").valueChanges.subscribe(x => {
-      this.reversedString = x.split("").reverse().join("");
+      this.firstName = x;
     })
   }
 

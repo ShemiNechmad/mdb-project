@@ -1,16 +1,17 @@
 <form [formGroup]="formGroup" class="body">
   <div class="md-form">
-    <input mdbInput mdbValidate type="text" id="form2" class="form-control" formControlName="firstName">
+    <input mdbInput mdbValidate type="text" id="form2" class="form-control" formControlName="firstName"
+      autocomplete="off">
     <label for="form2">First name:</label>
     <mdb-error *ngIf="input2.invalid && (input2.dirty || input2.touched)">Input invalid</mdb-error>
     <mdb-success *ngIf="input2.valid && (input2.dirty || input2.touched)">Input valid</mdb-success>
   </div>
   <div class="md-form">
-    <input mdbInput mdbValidate type="email" id="form8" class="form-control" formControlName="email">
+    <input mdbInput mdbValidate type="email" id="form8" class="form-control" formControlName="email" autocomplete="off">
     <label for="form8">Email:</label>
     <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)">Input invalid</mdb-error>
     <mdb-success *ngIf="input.valid && (input.dirty || input.touched)">Input valid</mdb-success>
   </div>
   <button (click)="send()" [disabled]="loading">Send</button>
-  <div>{{reversedString}}</div>
+  <app-reversing [firstName]="firstName"></app-reversing>
 </form>

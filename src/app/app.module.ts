@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ReversingComponent } from './reversing/reversing.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ReversingComponent
   ],
   imports: [
     BrowserModule,
