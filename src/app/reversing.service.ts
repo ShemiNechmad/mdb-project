@@ -8,6 +8,6 @@ export class ReversingService {
   constructor() { }
 
   reverse(firstName: string) {
-    return firstName.split("").reverse().join("");
+    return firstName.split("").reverse().join("");  // Reversing the string.
   }
 }

@@ -14,6 +14,7 @@ export class ReversingComponent implements OnChanges {
   constructor(private rev: ReversingService) { }
 
   ngOnChanges(changes: SimpleChanges) {
+    // Whenever parameters received, change for child component.
     for (const propName in changes) {
       if (changes.hasOwnProperty(propName)) {
         switch (propName) {

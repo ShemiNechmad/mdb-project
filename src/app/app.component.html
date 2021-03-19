@@ -1,4 +1,6 @@
 <form [formGroup]="formGroup" class="body">
+  
+  <!--firstName input-->
   <div class="md-form">
     <input mdbInput mdbValidate type="text" id="form2" class="form-control" formControlName="firstName"
       autocomplete="off">
@@ -6,6 +8,8 @@
     <mdb-error *ngIf="input2.invalid && (input2.dirty || input2.touched)">Input invalid</mdb-error>
     <mdb-success *ngIf="input2.valid && (input2.dirty || input2.touched)">Input valid</mdb-success>
   </div>
+
+  <!--email input-->
   <div class="md-form">
     <input mdbInput mdbValidate type="email" id="form8" class="form-control" formControlName="email" autocomplete="off">
     <label for="form8">Email:</label>
@@ -13,5 +17,7 @@
     <mdb-success *ngIf="input.valid && (input.dirty || input.touched)">Input valid</mdb-success>
   </div>
   <button (click)="send()" [disabled]="loading">Send</button>
+
+  <!--component for reversing word, gets 1 object-->
   <app-reversing [firstName]="firstName"></app-reversing>
 </form>
